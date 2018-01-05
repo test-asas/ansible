@@ -1,0 +1,6 @@
+---
+- hosts: CSR1000v 
+  connection: local
+  gather_facts: no
+  roles:
+    - cisco

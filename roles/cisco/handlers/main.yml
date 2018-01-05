@@ -1,0 +1,17 @@
+---
+- name: provider
+  set_fact:
+    cli:
+      host: "{{ inventory_hostname }}"
+      authorize: yes
+      username: "{{ ansible_ssh_user }}"
+      password: "{{ ansible_ssh_pass }}"
+      auth_pass: "{{ enable_pass }}"
+
+- name: write_memory
+  ios_command:
+    commands:
+      - wr
+    provider: "{{ cli }}"
+  register: output
+- debug: var=output.stdout_lines
